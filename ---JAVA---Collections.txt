@@ -1,0 +1,253 @@
+collection - group of objects, it is an interface under collection framework.
+ex-student Obj, Emp Obj, etc..
+
+***collections -- it is a predefined class, available in  java.util package.
+--this collections class contains group of methods, from these methods we perform operations on collection.
+
+->Array limitations
+--fixed in size[not growable]
+--only homogeneous data can be stored
+--during implementing array we do not used data structures therefore it cannot support ready-made methods(functions)
+
+
+--->TO OVERCOME FROM THESE LIMITATIONS WE USE COLLECTION FRAMEWORK
+
+*)CollectionFramework -it contains n number of collection interfaces. collection interface includes List interface, Set interface, Queue interface.
+
+Array						Collections
+*fixed size					*variable size
+*hold homogeneous data				*both homogeneous and heterogeneous data
+*no underlying data structure			*implemented using data structures
+ no ready-made methods				 with ready-made methods
+--------------------------------------------------------------------------------------------
+
+				Collection Framework
+					|
+				Collection Interface
+					|
+				-----------------
+				|	|	|
+			|--------	| 	-----------|
+			List(I)		Set(I)		  Queue(I)
+			1)ArrayList	1)HashSet	  1)Priority Queue
+			2)LinkedList	2)Linked HashSet  2)LinkedList
+
+
+***collection Interface is the root for list, set, queue interface***
+* collection is the parent of List, Set, Queue Interface.
+* the methods available inside collection interface are also available in list, set, queue interface.
+
+---methods available in collection interface---
+1)add(Object)--adds new single object
+2)addAll(collection c)--adds group of object
+3)remove(Obj value)--remove an single object
+4)removeAll(collection c)--removes all objects from collection
+5)retainAll(collection c)--except the given object(collection), all other objects will be removed
+6)clear() -- clear all object from collection
+7)isEmpty()--return Boolean value true if elements are in the collection, otherwise false.
+8)size()--returns the size ie. total number of elements in the collection.
+9)contains(parameter)-- checks the provided object is present in the collection.
+10)containsAll(collection)--checks the provided group of elements are present or not in the collection.
+11)toArray(collection c)--converts collections to Arrays
+
+
+**THESE METHODS ARE ABSTRACT[have only definition not implementation] FOR BOTH COLLECTION INTERFACE AND ITS CHILD INTERFACE**
+--these methods are implemented using ArrayList, LinkedList, HashSet, LinkedHashSet, PriorityQueue, etc...
+-------------------------------------------------------------------------
+
+---List Interface
+*)it is a child interface of collection interface.
+*)duplication is allowed and insertion order is preserved[indexing].
+  --methods of list interface--
+	1)add(index, object)--adds an element at the specified index.
+	2)add(object)--adds an element to the end of list.
+	3)addAll(index, collection)--adds all the elements to list.
+	4)remove(index)--removes object of the specified index.
+	5)get(index)--retrieve object from list.
+	6)set(index, object)--replace existing object into new object.
+
+*)classes of list interface are 
+	1)ArrayList.
+	2)LinkedList.
+	3)Vector[extended from stack]. also called as legacy class.
+
+1)ArrayList  [growable, duplicates allowed, insertion order preserved]
+--declaration
+	ArrayList al = new ArrayList(); [allows to store heterogeneous data]
+	ArrayList <String> al = new ArrayList <String> (); [stores only String data]
+	
+ --Methods of ArrayList [all methods of List Interface are also methods of ArrayList]
+	add(object)
+	add(index, object)
+	size()
+	remove(index)
+	get(index)   
+	set(index, object)
+	addAll()
+	removeAll()
+	Collections.sort(ArrayList) --for sorting in ascending.
+	Collections.sort(ArrayList,Collections.reverseOrder()) -- for sorting in descending order.
+	Collections.shuffle(al) -- for shuffling.
+---TO CONVERT ARRAYS TO ARRAY LIST,USE Arrays.asList(arr_name)---
+example:- 
+	string arr[]={"asd","dss"};
+	ArrayList al = new ArrayList(Arrays.asList(arr)); 
+
+2)LinkedList [preferred when there is more insertion and deletion because of no shifting]
+--every object is called as node
+--node have 3 parts[previous, data, next]
+--duplication allowed
+--indexing not preserved
+--null value allowed
+
+  --methods of LinkedList [all methods of List Interface are also methods of LinkedList]
+	*LinkedList is a class in which it implements methods from List and DeQueue
+	add(value)
+	add(index,value)
+	addAll(collection)
+	remove(object)
+	removeAll(collection)
+	get(index)
+	set(index,object)
+	*addFirst(object)--adds element to first node in linked list
+	*addLast(object) --adds to last node
+	*removeFirst(obj)--removes first node
+	*removeLast(obj)--removes last node
+	*getFirst() -- return first node
+	*getLast() --returns last node
+------------------------------------------	
+
+
+---Set Interface
+*)it is a child interface of collection interface.
+*)insertion order not preserved[indexing not possible].
+*)duplicates not allowed.
+*)classes of Set interface are
+	1)HashSet
+	2)Linked HashSet
+
+
+
+1)HashSet  [follows HashTable data structure]
+--duplication not allowed.
+--insertion order is not preserved.
+--elements inserted with HashCode.
+--heterogeneous data is supported and nulls also.
+--searching is faster.[sorting and shuffling not possible].
+	---declaration 
+	HashSet hs= new HashSet(); [it will create a hashset of 16 size, load factor =0.75%]
+	HashSet hs = new HashSet(100,0.95%)
+
+	--methods of HashSets
+		methods of set Interface are implemented by HashSet
+		*add(obj)
+		*addAll(collection)
+		*remove(object)
+		*removeAll(collection)
+		*contains(object)
+		*containsAll(collection)		
+		*isEmpty()
+
+2)Linked HashSet  [follows HashTable + LinkedList data structure].
+--duplication not allowed.
+--insertion order is  preserved.
+--same initial size 16 and load factor 0.75%.
+
+--------------------------------------------------------------	
+
+
+---Queue Interface
+*)it is a child interface of collection interface.
+*)it is used when we have prior to processing.[priority]--FIFO.
+*)insertion in queue takes place in tail and deletion takes place in head
+*)duplications are allowed, insertion order is preserved.
+---methods of queue
+		*)add()--adds an object if it is success then it will return true otherwise raise the exceptions.
+		*)offer()--this method also do the same work as add().but if it fails to execute then it will returns false.
+		*)element()--return head element from the queue. [if queue is empty then it will throws exception]
+		*)peek()--this method also used for returning head element from queue.[if queue is empty then it will return null]
+		*)remove()--used to return head element and remove element.[if queue is empty it will rise exception]
+		*)poll()--used to return head element and remove element.[if queue is empty it will return null]
+
+*)classes of Queue Interface are
+	1)priority Queue.[all methods of queue are implemented using PriorityQueue]
+
+		*)insertion order preserved.
+		*)duplicate data allowed.
+		*)Homogeneous data allowed.
+
+
+	2)LinkedList.[all methods of queue are implemented using LinkedList]
+
+		*)insertion order preserved.
+		*)duplicate data allowed.
+		*)heterogenous data allowed.
+		
+*)child Interfaces of Queue Interface are
+	1)Dequeue
+	2)Blocking Queue
+	3)Blocking Dequeue
+
+----------------------------------------------------------------------------------
+
+
+					Map Interface
+					     |
+					     |
+					1)HashMap
+					2)Linked HashMap
+					3)HashTable
+
+
+---Map Interface
+*)it is not a child interface of collection interface. 
+*)Map interface stores data in form of key and value.
+*)key must be unique[not duplicated].but value can be dublicated. 
+*)classes of Map interface are
+	1)HashMap
+	2)Linked HashMap
+	3)HashTable
+
+1)HashMap
+*)it is implemented using map interface
+*)hashtable is the underlying data structure for HashMap.
+*)insertion order is not preserved.
+*)null keys only once allowed
+*)null values allowed
+  --methods of HashMap class
+	*)put(key,value)--adding elements.
+	*)outAll(collection)--adding a map into another map.
+	*)get(key)--return values based on key.
+	*)remove(key)--remove value along with key.
+	*)contains(key)--returns Boolean value true if key is in hashmap.
+	*)contains(value)--returns Boolean value true if value is in hashmap.
+	*)isEmpty()--return Boolean value true if hashmap is empty.
+	*)size()--retuns total number of elements in hashmap.
+	*)clear()--clears entire hashmap.
+	*)keyset()--return all list of keys in a set object.
+	*)values()--return all the values in collection.
+	*)entrySet()-return all entrySet as set.[key along with value].
+
+
+
+2)HashTable
+*)methods of map interface are also the methods of HashTable.
+*)underlying data structure is hashtable.
+*)capacity 11, load factor 0.75
+*)all methods of hashmap are implemented with hashtable also.
+
+--->hashmap								--->hashtable
+*)non-Synchronized[multiple threads can access at a time].		*)Synchronized[only one thread will be allowed at a time].
+*)multiple-threads allowed.						*)one-threadallowed at a time.
+*)not thread-safe.							*)thread -safe.
+*)performance is faster.						*)poor performance.
+*)nulls allowed.							*)nulls cannot accepted.
+*)insertion order not preserved.					*)insertion order preserved.
+
+
+
+
+
+
+
+
